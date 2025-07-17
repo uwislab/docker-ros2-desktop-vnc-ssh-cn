@@ -140,6 +140,7 @@ RUN echo 'root:ubuntu' | chpasswd && \
 
 COPY ./entrypoint.sh /
 RUN dos2unix /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 ENTRYPOINT [ "/bin/bash", "-c", "/entrypoint.sh" ]
 
 ENV USER ubuntu
