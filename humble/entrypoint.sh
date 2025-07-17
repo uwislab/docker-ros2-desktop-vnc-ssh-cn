@@ -80,6 +80,14 @@ grep -F "source /opt/ros/$ROS_DISTRO/setup.bash" $BASHRC_PATH || echo "source /o
 grep -F "source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash" $BASHRC_PATH || echo "source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash" >> $BASHRC_PATH
 chown $USER:$USER $BASHRC_PATH
 
+# 配置VSCodium扩展环境变量（用户级别）
+if [ -n "$USER" ] && [ "$USER" != "root" ]; then
+    echo "export VSCODE_EXTENSIONS=/usr/share/codium/extensions" >> /home/$USER/.bashrc
+    echo "export VSCODE_USER_DATA_DIR=/home/$USER/.vscode-oss" >> /home/$USER/.bashrc
+    # 确保扩展目录权限（最终保障）
+    sudo chown -R $USER:$USER /usr/share/codium/extensions
+    sudo chmod -R 777 /usr/share/codium/extensions
+fi
 # 配置中文输入法环境变量
 echo 'export XMODIFIERS=@im=ibus' >> $BASHRC_PATH
 echo 'export GTK_IM_MODULE=ibus' >> $BASHRC_PATH

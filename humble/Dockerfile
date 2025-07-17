@@ -85,6 +85,19 @@ RUN wget https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg
     apt-get autoremove && \
     rm -rf /var/lib/apt/lists/*
 
+# 安装VSCodium扩展（带验证步骤）
+RUN mkdir -p /usr/share/codium/extensions && \
+    chmod -R 777 /usr/share/codium/extensions && \
+    codium --install-extension google.geminicodeassist --no-sandbox --user-data-dir /tmp/vscodium-tmp --extensions-dir /usr/share/codium/extensions && \
+    codium --install-extension tencent-cloud.coding-copilot --no-sandbox --user-data-dir /tmp/vscodium-tmp --extensions-dir /usr/share/codium/extensions && \
+    codium --install-extension vivaxy.vscode-conventional-commits --no-sandbox --user-data-dir /tmp/vscodium-tmp --extensions-dir /usr/share/codium/extensions && \
+    codium --install-extension codeium.codeium --no-sandbox --user-data-dir /tmp/vscodium-tmp --extensions-dir /usr/share/codium/extensions && \
+    echo "扩展安装验证：" && ls -la /usr/share/codium/extensions
+
+# 创建用户扩展目录并设置软链接（双重保险）
+RUN mkdir -p /home/ubuntu/.vscode-oss/extensions && \
+    ln -s /usr/share/codium/extensions/* /home/ubuntu/.vscode-oss/extensions/
+
 # Install ROS
 ENV ROS_DISTRO humble
 # desktop or ros-base
