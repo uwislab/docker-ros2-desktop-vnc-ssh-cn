@@ -32,7 +32,8 @@ RUN apt-get update -q && \
 # Install Ubuntu Mate desktop
 RUN apt-get update -q && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y \
-        ubuntu-mate-desktop && \
+        ubuntu-mate-desktop \
+        net-tools xclip mc micro nano lrzsz git autojump iputils-ping && \
     apt-get autoclean && \
     apt-get autoremove && \
     rm -rf /var/lib/apt/lists/*
@@ -44,7 +45,7 @@ RUN apt-get update && \
         supervisor wget curl gosu git sudo python3-pip tini \
         build-essential vim sudo lsb-release locales \
         bash-completion tzdata terminator \
-        dos2unix && \
+        dos2unix openssh-server ibus ibus-pinyin && \
     apt-get autoclean && \
     apt-get autoremove && \
     rm -rf /var/lib/apt/lists/*
@@ -116,6 +117,13 @@ RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then \
 
 # Enable apt-get completion after running `apt-get update` in the container
 RUN rm /etc/apt/apt.conf.d/docker-clean
+
+RUN echo 'root:ubuntu' | chpasswd && \
+    sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config && \
+    sed -i 's/#UsePAM yes/UsePAM no/' /etc/ssh/sshd_config && \
+    ssh-keygen -A && \
+    chmod 600 /etc/ssh/ssh_host_*_key && \
+    mkdir -p /var/run/sshd && chmod 0755 /var/run/sshd
 
 COPY ./entrypoint.sh /
 RUN dos2unix /entrypoint.sh

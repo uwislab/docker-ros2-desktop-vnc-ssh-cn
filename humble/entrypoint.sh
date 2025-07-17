@@ -70,6 +70,8 @@ user=root
 command=gosu '$USER' bash '$VNCRUN_PATH'
 [program:novnc]
 command=gosu '$USER' bash -c "websockify --web=/usr/lib/novnc 80 localhost:5901"
+[program:sshd]
+command=/usr/sbin/sshd -D -d
 EOF
 
 # colcon
@@ -77,6 +79,38 @@ BASHRC_PATH=$HOME/.bashrc
 grep -F "source /opt/ros/$ROS_DISTRO/setup.bash" $BASHRC_PATH || echo "source /opt/ros/$ROS_DISTRO/setup.bash" >> $BASHRC_PATH
 grep -F "source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash" $BASHRC_PATH || echo "source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash" >> $BASHRC_PATH
 chown $USER:$USER $BASHRC_PATH
+
+# 配置中文输入法环境变量
+echo 'export XMODIFIERS=@im=ibus' >> $BASHRC_PATH
+echo 'export GTK_IM_MODULE=ibus' >> $BASHRC_PATH
+echo 'export QT_IM_MODULE=ibus' >> $BASHRC_PATH
+# 添加runclip别名
+echo "alias runclip='xclip -o -selection clipboard | bash'" >> $BASHRC_PATH
+# 配置autojump
+echo ". /usr/share/autojump/autojump.sh" >> $BASHRC_PATH
+
+# 启动IBus并配置拼音输入法
+cat << EOF >> $VNCRUN_PATH
+# 启动IBus输入法
+ibus-daemon -drx --xim
+# 等待IBus初始化
+sleep 2
+# 显式添加并激活输入法
+ibus list-engines | grep -q pinyin || ibus engine pinyin
+ibus list-engines | grep -q ibus-engines || ibus engine xkb:us::eng
+# 配置拼音为简体中文
+if [ "\$USER" = "root" ]; then
+  gsettings set org.freedesktop.ibus.pinyin.engine.pinyin simplification true
+  # 设置预加载输入法（英文+拼音）
+  gsettings set org.freedesktop.ibus.general preload-engines "['xkb:us::eng', 'pinyin']"
+  # 设置默认输入法切换快捷键
+  gsettings set org.freedesktop.ibus.general.hotkey triggers "['<Super>space']"
+else
+  sudo -u \$USER gsettings set org.freedesktop.ibus.pinyin.engine.pinyin simplification true
+  sudo -u \$USER gsettings set org.freedesktop.ibus.general preload-engines "['xkb:us::eng', 'pinyin']"
+  sudo -u \$USER gsettings set org.freedesktop.ibus.general.hotkey triggers "['<Super>space']"
+fi
+EOF
 
 # Fix rosdep permission
 mkdir -p $HOME/.ros
@@ -181,7 +215,7 @@ Comment[ru]=Доступ в Интернет
 Comment[sk]=Prehliadanie internetu
 Comment[sl]=Brskajte po spletu
 Comment[sv]=Surfa på webben
-Comment[tr]=İnternet'te Gezinin
+Comment[tr]=Để duyệt các trang web
 Comment[ug]=دۇنيادىكى توربەتلەرنى كۆرگىلى بولىدۇ
 Comment[uk]=Перегляд сторінок Інтернету
 Comment[vi]=Để duyệt các trang web
@@ -251,7 +285,7 @@ Keywords[pt_BR]=Internet;WWW;Browser;Web;Explorador;Navegador
 Keywords[ru]=Internet;WWW;Browser;Web;Explorer;интернет;браузер;веб;файрфокс;огнелис
 Keywords[sk]=Internet;WWW;Prehliadač;Web;Explorer
 Keywords[sl]=Internet;WWW;Browser;Web;Explorer;Brskalnik;Splet
-Keywords[tr]=İnternet;WWW;Tarayıcı;Web;Gezgin;Web sitesi;Site;sörf;çevrimiçi;tara
+Keywords[tr]=Để duyệt các trang web
 Keywords[uk]=Internet;WWW;Browser;Web;Explorer;Інтернет;мережа;переглядач;оглядач;браузер;веб;файрфокс;вогнелис;перегляд
 Keywords[vi]=Internet;WWW;Browser;Web;Explorer;Trình duyệt;Trang web
 Keywords[zh_CN]=Internet;WWW;Browser;Web;Explorer;网页;浏览;上网;火狐;Firefox;ff;互联网;网站;
@@ -348,6 +382,26 @@ Exec=/usr/share/codium/codium --new-window %F
 Icon=vscodium
 EOF
 chown -R $USER:$USER $HOME/Desktop
+
+# 添加ibus启动快捷方式
+cat << EOF > $HOME/Desktop/ibus-daemon.desktop
+[Desktop Entry]
+Name=IBus中文输入法
+Comment=启动IBus输入法守护进程（包含英文和拼音输入法）
+Exec=bash -c "ibus-daemon -drx --xim && sleep 3 && ibus engine pinyin"
+Icon=ibus
+Terminal=false
+Type=Application
+Categories=Utility;InputMethod;
+Keywords=input;chinese;pinyin;english;
+EOF
+chmod +x $HOME/Desktop/ibus-daemon.desktop
+chown $USER:$USER $HOME/Desktop/ibus-daemon.desktop
+
+# Fix rosdep permission
+mkdir -p $HOME/.ros
+cp -r /root/.ros/rosdep $HOME/.ros/rosdep
+chown -R $USER:$USER $HOME/.ros
 
 # clearup
 PASSWORD=
