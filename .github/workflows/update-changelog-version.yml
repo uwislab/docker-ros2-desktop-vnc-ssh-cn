@@ -20,7 +20,7 @@ jobs:
           # 核心配置
           token: ${{ secrets.GITHUB_TOKEN }}
           path: 'CHANGELOG.md'           # 变更日志路径
-          version-file: 'VERSION.md'        # 版本号文件路径
+          version-file: 'VERSION'        # 版本号文件路径
           commit-message: 'chore: update changelog'  # 提交信息
           
           # 版本控制
