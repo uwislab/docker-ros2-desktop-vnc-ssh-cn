@@ -1,17 +1,17 @@
-# .github/workflows/release-please.yml
-name: Release Please
+# .github/workflows/changelog.yml
+name: Update Changelog
 on:
   push:
     branches:
-      - master
+      - main
 jobs:
-  release-please:
+  changelog:
     runs-on: ubuntu-latest
     steps:
-      - uses: google-github-actions/release-please-action@v3
-        id: release
+      - uses: actions/checkout@v3
+      - uses: actions-cool/changelog@v3
         with:
-          release-type: node  # 支持 node, python, go 等
-          changelog-path: 'CHANGELOG.md'
-          package-name: your-package-name
           token: ${{ secrets.GITHUB_TOKEN }}
+          path: 'CHANGELOG.md'
+          version-file: 'VERSION'  # 生成版本文件
+          commit-message: 'chore: update changelog'
