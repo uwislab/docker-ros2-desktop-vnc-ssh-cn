@@ -43,4 +43,5 @@ jobs:
         run: |
           git add VERSION CHANGELOG.md
           git commit -m "chore: update version and changelog"
-          git push
+          git pull --rebase origin master
+          git push --force-with-lease origin master
