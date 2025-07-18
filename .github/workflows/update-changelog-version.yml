@@ -14,7 +14,7 @@ jobs:
         with:
           fetch-depth: 0  # 获取完整提交历史
 
-      - uses: actions-cool/changelog@v3
+      - uses: TriPSs/conventional-changelog-action@v5
         id: changelog
         with:
           # 核心配置
