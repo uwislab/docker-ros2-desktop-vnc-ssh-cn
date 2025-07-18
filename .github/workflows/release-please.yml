@@ -19,3 +19,6 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           config-file: .release-please.yml
+          github-api-url: https://api.github.com
+          github-graphql-url: https://api.github.com/graphql
+          changelog-host: https://github.com
