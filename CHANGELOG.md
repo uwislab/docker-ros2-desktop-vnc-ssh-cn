@@ -215,3 +215,5 @@
 - chore: bump version to 2.0.1 (1422cbc)
 - chore: update CHANGELOG (58c3121)
 - feat: MAJOR add fourth changelog test (59c2e22)
+- chore: update CHANGELOG (9014aec)
+- chore: merge update-changelog and update-version workflows (282b60f)
