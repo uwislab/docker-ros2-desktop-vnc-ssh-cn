@@ -1,45 +1,17 @@
-# .github/workflows/changelog.yml
-name: Update Changelog
+# .github/workflows/release-please.yml
+name: Release Please
 on:
   push:
     branches:
-      - master
+      - main
 jobs:
-  generate-changelog:
+  release-please:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: google-github-actions/release-please-action@v3
+        id: release
         with:
-          fetch-depth: 0
-
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18
-
-      # 安装额外依赖
-      - run: npm install -g conventional-changelog-cli conventional-recommended-bump @semantic-release/commit-analyzer
-
-      # 生成 CHANGELOG
-      - run: |
-          conventional-changelog -p angular -i CHANGELOG.md -s -r 0 --config ./changelog.config.js
-          echo "CHANGELOG generated successfully"
-
-      # 生成 VERSION
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-      - name: Install changelog preset
-        run: npm install -g conventional-changelog-angular
-      - name: Update Version
-        run: |
-          latest_version=$(npx conventional-recommended-bump -p angular)
-          echo "$latest_version" > VERSION.md
-          echo "VERSION updated to $latest_version"
-
-      # 提交更新
-      - run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add CHANGELOG.md VERSION.md
-          git commit -m "chore: update CHANGELOG and VERSION" || echo "No changes to commit"
-          git push
+          release-type: node  # 支持 node, python, go 等
+          changelog-path: 'CHANGELOG.md'
+          package-name: your-package-name
+          token: ${{ secrets.GITHUB_TOKEN }}
