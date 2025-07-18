@@ -10,26 +10,33 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          fetch-depth: 0  # 获取完整提交历史
+          fetch-depth: 0
 
       - uses: actions/setup-node@v3
         with:
           node-version: 18
 
-      - run: npm install -g conventional-changelog-cli
+      # 安装额外依赖
+      - run: npm install -g conventional-changelog-cli conventional-recommended-bump @semantic-release/commit-analyzer
 
-      # 生成专业排版的 CHANGELOG.md（按主版本号分隔，分类展示）
+      # 生成 CHANGELOG
       - run: |
           conventional-changelog -p angular -i CHANGELOG.md -s -r 0 --config ./changelog.config.js
           echo "CHANGELOG generated successfully"
 
-      # 生成 VERSION.md 文件，提取最新版本号
-      - run: |
-          latest_version=$(conventional-recommended-bump -p angular)
+      # 生成 VERSION
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install changelog preset
+        run: npm install -g conventional-changelog-angular
+      - name: Update Version
+        run: |
+          latest_version=$(npx conventional-recommended-bump -p angular)
           echo "$latest_version" > VERSION.md
           echo "VERSION updated to $latest_version"
 
-      # 提交更新后的文件
+      # 提交更新
       - run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
