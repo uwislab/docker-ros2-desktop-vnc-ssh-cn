@@ -225,3 +225,6 @@
 - chore: update version and changelog (21dfa82)
 - fix: add fourth changelog test (ae59539)
 - fix: use rebase pull to prevent push conflicts (8d328f5)
+- chore: update version and changelog (e01ca59)
+- fix: add fourth changelog test (26f2f2a)
+- fix: add post-commit rebase and safe push (338a095)
