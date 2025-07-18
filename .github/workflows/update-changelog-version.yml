@@ -1,47 +1,22 @@
-name: Update Changelog and Version
+# .github/workflows/changelog.yml
+name: Update Changelog and VERSION
 on:
   push:
-    branches: [ master ]
+    branches:
+      - main
 jobs:
-  update-changelog-version:
+  generate-changelog:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v3
         with:
-          fetch-depth: 0
-      - name: Configure Git
-        run: |
-          git config --global user.name 'GitHub Actions'
-          git config --global user.email 'actions@github.com'
-      - name: Pull latest changes
-        run: git pull --rebase origin master
-      - name: Update Version
-        run: |
-          current_version=$(cat VERSION)
-          major=$(echo $current_version | cut -d. -f1)
-          minor=$(echo $current_version | cut -d. -f2)
-          patch=$(echo $current_version | cut -d. -f3)
-          commit_msg=$(git log -1 --pretty=%B)
-          if echo "$commit_msg" | grep -qE 'BREAKING CHANGE|MAJOR'; then
-            major=$((major + 1))
-            minor=0
-            patch=0
-          elif echo "$commit_msg" | grep -qE 'feat|MINOR'; then
-            minor=$((minor + 1))
-            patch=0
-          elif echo "$commit_msg" | grep -qE 'fix|PATCH'; then
-            patch=$((patch + 1))
-          fi
-          new_version="$major.$minor.$patch"
-          echo $new_version > VERSION
-      - name: Update CHANGELOG
-        run: |
-          echo '# Changelog' > CHANGELOG.md
-          echo '' >> CHANGELOG.md
-          git log --pretty=format:"- %s (%h)" --reverse >> CHANGELOG.md
-      - name: Commit changes
-        run: |
-          git add VERSION CHANGELOG.md
-          git commit -m "chore: update changelog and version"
-          git pull --rebase origin master
-          git push --force-with-lease origin master
+          fetch-depth: 0  # 获取完整提交历史
+      - uses: actions/setup-node@v3
+      - run: npm install -g conventional-changelog-cli
+      - run: conventional-changelog -p angular -i CHANGELOG.md -s
+      - run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add CHANGELOG.md
+          git commit -m "chore: update CHANGELOG" || echo "No changes to commit"
+          git push
