@@ -84,7 +84,7 @@ command=gosu '$USER' bash '$VNCRUN_PATH'
 [program:novnc]
 command=gosu '$USER' bash -c "websockify --web=/usr/lib/novnc 80 localhost:5901"
 [program:sshd]
-command=/usr/sbin/sshd -D -d
+command=/usr/sbin/sshd -D
 EOF
 
 # colcon
