@@ -3,7 +3,7 @@ name: Release Please
 
 on:
   push:
-    branches: [main]
+    branches: [ master ]  # 将main改为master
 
 permissions:
   contents: write

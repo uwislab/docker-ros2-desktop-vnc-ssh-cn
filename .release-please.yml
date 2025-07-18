@@ -5,3 +5,5 @@ changelog-path: CHANGELOG.md
 version-file: VERSION
 bump-minor-pre-major: false
 bump-patch-for-minor-pre-major: false
+# 添加以下配置指定主分支
+primary-branch: master
