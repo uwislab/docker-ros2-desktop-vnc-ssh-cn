@@ -213,3 +213,5 @@
 - chore: bump version to 2.0.0 (e3002c9)
 - fix: add git pull to prevent non-fast-forward errors (f2e5054)
 - chore: bump version to 2.0.1 (1422cbc)
+- chore: update CHANGELOG (58c3121)
+- feat: MAJOR add fourth changelog test (59c2e22)
