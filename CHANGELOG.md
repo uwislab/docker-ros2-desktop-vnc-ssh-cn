@@ -190,3 +190,6 @@
 - ci: remove redundant github api urls from release-please config (8303c07)
 - feat: add fourth changelog test (e253919)
 - ddddMerge branch 'master' of https://github.com/uwislab/docker-ros2-desktop-vnc-ssh-cn (0a3461b)
+- chore: update CHANGELOG (dce9732)
+- feat: add fourth changelog test (c5ed853)
+- Merge branch 'master' of https://github.com/uwislab/docker-ros2-desktop-vnc-ssh-cn (1ec6dc6)
