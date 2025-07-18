@@ -1,152 +1,188 @@
-<a name="unreleased"></a>
-## [Unreleased]
+# Changelog
 
-<a name="v2.0.0"></a>
-## [v2.0.0] - 2023-09-10
-### CI
-- Update set-output to recommended format ([#81](https://github.com/Tiryoh/docker-ros2-desktop-vnc/issues/81))
-- Fix cache clean step ([#76](https://github.com/Tiryoh/docker-ros2-desktop-vnc/issues/76))
-- Optimize for self-hosted runner ([#75](https://github.com/Tiryoh/docker-ros2-desktop-vnc/issues/75))
-- Use self-hosted runner ([#72](https://github.com/Tiryoh/docker-ros2-desktop-vnc/issues/72))
-
-### Chore
-- Use GHA composite action ([#111](https://github.com/Tiryoh/docker-ros2-desktop-vnc/issues/111))
-- bump ubuntu from jammy-20230522 to jammy-20230804 ([#106](https://github.com/Tiryoh/docker-ros2-desktop-vnc/issues/106))
-- Check docker base image version ([#102](https://github.com/Tiryoh/docker-ros2-desktop-vnc/issues/102))
-- Fix Trivy scan timeout ([#93](https://github.com/Tiryoh/docker-ros2-desktop-vnc/issues/93))
-- Add CODE_OF_CONDUCT.md and CONTRIBUTING.md ([#86](https://github.com/Tiryoh/docker-ros2-desktop-vnc/issues/86))
-
-### Documentation
-- Update README ([#101](https://github.com/Tiryoh/docker-ros2-desktop-vnc/issues/101))
-
-### Features
-- Add VSCodium ([#99](https://github.com/Tiryoh/docker-ros2-desktop-vnc/issues/99))
-- Add FireFox ([#98](https://github.com/Tiryoh/docker-ros2-desktop-vnc/issues/98))
-- Add terminator shortcut on desktop ([#95](https://github.com/Tiryoh/docker-ros2-desktop-vnc/issues/95))
-- Use atsushisaito/docker-ubuntu-sweb ([#92](https://github.com/Tiryoh/docker-ros2-desktop-vnc/issues/92))
-- Add ROS 2 Iron Irwini ([#89](https://github.com/Tiryoh/docker-ros2-desktop-vnc/issues/89))
-- Set ROS 2 Humble as the "latest" image ([#83](https://github.com/Tiryoh/docker-ros2-desktop-vnc/issues/83))
-- Drop support for ROS 2 Galactic ([#82](https://github.com/Tiryoh/docker-ros2-desktop-vnc/issues/82))
-- Enable colcon-argcomplete ([#80](https://github.com/Tiryoh/docker-ros2-desktop-vnc/issues/80))
-- Enable bash-completion ([#79](https://github.com/Tiryoh/docker-ros2-desktop-vnc/issues/79))
-- Add terminator ([#73](https://github.com/Tiryoh/docker-ros2-desktop-vnc/issues/73))
-
-### Fix
-- Fix FireFox install error ([#112](https://github.com/Tiryoh/docker-ros2-desktop-vnc/issues/112))
-- Add "--security-opt" ([#94](https://github.com/Tiryoh/docker-ros2-desktop-vnc/issues/94))
-- Stop using mirror server ([#88](https://github.com/Tiryoh/docker-ros2-desktop-vnc/issues/88))
-- Fix platform specifying error ([#67](https://github.com/Tiryoh/docker-ros2-desktop-vnc/issues/67))
-- Remove simulation package from rolling arm64 ([#68](https://github.com/Tiryoh/docker-ros2-desktop-vnc/issues/68))
-
-<a name="v1.4.0"></a>
-## [v1.4.0] - 2022-09-20
-### CI
-- Add dependabot.yml ([#48](https://github.com/Tiryoh/docker-ros2-desktop-vnc/issues/48))
-- Allow execution even if other jobs fail ([#49](https://github.com/Tiryoh/docker-ros2-desktop-vnc/issues/49))
-- Refactor GitHub Actions config file ([#46](https://github.com/Tiryoh/docker-ros2-desktop-vnc/issues/46))
-- Update tag release CI trigger condition ([#41](https://github.com/Tiryoh/docker-ros2-desktop-vnc/issues/41))
-
-### Chore
-- Update git-chglog config to add dependabot log ([#63](https://github.com/Tiryoh/docker-ros2-desktop-vnc/issues/63))
-- bump docker/metadata-action from 3 to 4 ([#51](https://github.com/Tiryoh/docker-ros2-desktop-vnc/issues/51))
-- bump docker/setup-qemu-action from 1 to 2 ([#54](https://github.com/Tiryoh/docker-ros2-desktop-vnc/issues/54))
-- bump github/codeql-action from 1 to 2 ([#55](https://github.com/Tiryoh/docker-ros2-desktop-vnc/issues/55))
-- bump docker/login-action from 1 to 2 ([#53](https://github.com/Tiryoh/docker-ros2-desktop-vnc/issues/53))
-- bump actions/checkout from 2 to 3 ([#52](https://github.com/Tiryoh/docker-ros2-desktop-vnc/issues/52))
-- Add docker label ([#40](https://github.com/Tiryoh/docker-ros2-desktop-vnc/issues/40))
-
-### Documentation
-- Add related projects link ([#61](https://github.com/Tiryoh/docker-ros2-desktop-vnc/issues/61))
-
-### Features
-- Upgrade rolling base image to Ubuntu 22.04 ([#59](https://github.com/Tiryoh/docker-ros2-desktop-vnc/issues/59))
-- Add ROS 2 Humble Dockerfile ([#56](https://github.com/Tiryoh/docker-ros2-desktop-vnc/issues/56))
-- Add ROS 2 Rolling Ridley ([#44](https://github.com/Tiryoh/docker-ros2-desktop-vnc/issues/44))
-
-### Fix
-- Update hotfix ([#50](https://github.com/Tiryoh/docker-ros2-desktop-vnc/issues/50))
-
-### Refactor
-- Merge install script into Dockerfile ([#45](https://github.com/Tiryoh/docker-ros2-desktop-vnc/issues/45))
-
-
-<a name="v1.3.0"></a>
-## [v1.3.0] - 2022-01-09
-### CI
-- Create multi-architecture image ([#38](https://github.com/Tiryoh/docker-ros2-desktop-vnc/issues/38))
-- Simplify authentication ([#36](https://github.com/Tiryoh/docker-ros2-desktop-vnc/issues/36))
-
-### Documentation
-- Add link to ros-desktop-vnc
-
-### Features
-- Add Dockerfile for galactic-arm64 to support Apple Silicon ([#35](https://github.com/Tiryoh/docker-ros2-desktop-vnc/issues/35))
-
-
-<a name="v1.2.0"></a>
-## [v1.2.0] - 2021-08-18
-### CI
-- Add ROS 2 Galactic ([#30](https://github.com/Tiryoh/docker-ros2-desktop-vnc/issues/30))
-
-### Chore
-- Add documentation update to CHANGELOG ([#32](https://github.com/Tiryoh/docker-ros2-desktop-vnc/issues/32))
-
-### Features
-- Drop ROS 2 Dashing support ([#31](https://github.com/Tiryoh/docker-ros2-desktop-vnc/issues/31))
-- Add Dockerfile for dashing-arm64 to support Apple Silicon ([#20](https://github.com/Tiryoh/docker-ros2-desktop-vnc/issues/20))
-- Set foxy as the "latest" image ([#22](https://github.com/Tiryoh/docker-ros2-desktop-vnc/issues/22))
-
-
-<a name="v1.1.0"></a>
-## [v1.1.0] - 2021-06-18
-### Documentation
-- Fix the link to Foxy's Dockerfile ([#28](https://github.com/Tiryoh/docker-ros2-desktop-vnc/issues/28))
-
-### Features
-- Update GPG key installation step to the latest ([#27](https://github.com/Tiryoh/docker-ros2-desktop-vnc/issues/27))
-- Add ROS 2 Galactic ([#23](https://github.com/Tiryoh/docker-ros2-desktop-vnc/issues/23))
-
-
-<a name="v1.0.0"></a>
-## v1.0.0 - 2021-05-27
-### CI
-- Add git tag release actions ([#24](https://github.com/Tiryoh/docker-ros2-desktop-vnc/issues/24))
-- Use official skip [skip ci]
-
-### Chore
-- Add git-chglog config ([#25](https://github.com/Tiryoh/docker-ros2-desktop-vnc/issues/25))
-- Fix ghcr.io deploy error
-- Fix ghcr.io deploy error ([#17](https://github.com/Tiryoh/docker-ros2-desktop-vnc/issues/17))
-- Publish to ghcr.io ([#16](https://github.com/Tiryoh/docker-ros2-desktop-vnc/issues/16))
-- Update build log URL written to the wiki
-- Update deploy step
-- Add timestamp to docker tags
-- Add GitHub Actions settings ([#2](https://github.com/Tiryoh/docker-ros2-desktop-vnc/issues/2))
-
-### Documentation
-- Update README ([#15](https://github.com/Tiryoh/docker-ros2-desktop-vnc/issues/15))
-- Add links and details ([#5](https://github.com/Tiryoh/docker-ros2-desktop-vnc/issues/5))
-- Update the execution command ([#4](https://github.com/Tiryoh/docker-ros2-desktop-vnc/issues/4))
-
-### Features
-- Add Dockerfile for foxy-arm64 to support Apple Silicon ([#21](https://github.com/Tiryoh/docker-ros2-desktop-vnc/issues/21))
-- Drop support for ROS Eloquent ([#18](https://github.com/Tiryoh/docker-ros2-desktop-vnc/issues/18))
-- Add install scripts ([#11](https://github.com/Tiryoh/docker-ros2-desktop-vnc/issues/11))
-- Setup rosdep on install step ([#10](https://github.com/Tiryoh/docker-ros2-desktop-vnc/issues/10))
-- Enable ros-foxy-gazebo-ros-pkgs ([#8](https://github.com/Tiryoh/docker-ros2-desktop-vnc/issues/8))
-- Add ROS 2 Foxy ([#7](https://github.com/Tiryoh/docker-ros2-desktop-vnc/issues/7))
-- Add LICENSE
-- Add eloquent
-- Add dashing
-- Initial commit
-
-### Fix
-- Fix dashing tag image ([#14](https://github.com/Tiryoh/docker-ros2-desktop-vnc/issues/14))
-
-
-[Unreleased]: https://github.com/Tiryoh/docker-ros2-desktop-vnc/compare/v2.0.0...HEAD
-[v2.0.0]: https://github.com/Tiryoh/docker-ros2-desktop-vnc/compare/v1.4.0...v2.0.0
-[v1.4.0]: https://github.com/Tiryoh/docker-ros2-desktop-vnc/compare/v1.3.0...v1.4.0
-[v1.3.0]: https://github.com/Tiryoh/docker-ros2-desktop-vnc/compare/v1.2.0...v1.3.0
-[v1.2.0]: https://github.com/Tiryoh/docker-ros2-desktop-vnc/compare/v1.1.0...v1.2.0
-[v1.1.0]: https://github.com/Tiryoh/docker-ros2-desktop-vnc/compare/v1.0.0...v1.1.0
+- Initial commit (3438830)
+- Add dashing (51431f0)
+- Add eloquent (1ca08df)
+- Add LICENSE (92d934e)
+- Add GitHub Actions settings (9aa700c)
+- Fix Dockerfile paths (183c3b3)
+- Fix build test error (d2f5fad)
+- Fix Triviy scan argument (4b9a24b)
+- Merge pull request #2 from Tiryoh/add_github_actions (124fb9d)
+- feat: add timestamp to docker tags (cf4fee9)
+- chore: update deploy step (a62edc1)
+- chore: Update build log URL written to the wiki (606068c)
+- docs: Update the execution command (#4) (0c440d0)
+- docs: Add links and details (#5) (dc6e50a)
+- test: Update log page (#6) (51145a2)
+- feat: Add ROS 2 Foxy (#7) (3dcda8f)
+- feat: Enable ros-foxy-gazebo-ros-pkgs (#8) (aee7fd4)
+- feat: Setup rosdep on install step (#10) (9c370e3)
+- feat: Add install scripts (#11) (9bfd870)
+- fix: Fix dashing tag image (#14) (69331e4)
+- docs: Update README (#15) (1c08d4a)
+- chore: Publish to ghcr.io (#16) (affe4ca)
+- chore: Fix ghcr.io deploy error (#17) (4ee1a0d)
+- chore: Fix ghcr.io deploy error (c41bd7e)
+- feat: Drop support for ROS Eloquent (#18) (ee88002)
+- ci: Use official skip [skip ci] (93f5870)
+- feat: Add Dockerfile for foxy-arm64 to support Apple Silicon (#21) (afbd2a6)
+- ci: Add git tag release actions (#24) (b4edff2)
+- chore: Add git-chglog config (#25) (bd24da3)
+- release: v1.0.0 (#26) (08687ec)
+- feat: Add ROS 2 Galactic (#23) (a31d683)
+- feat: Update GPG key installation step to the latest (#27) (52ee2de)
+- docs: Fix the link to Foxy's Dockerfile (#28) (48d862e)
+- release: v1.1.0 (#29) (ad90fea)
+- feat: Set foxy as the "latest" image (#22) (5ce02f4)
+- ci: Add ROS 2 Galactic (#30) (7876e96)
+- feat: Add Dockerfile for dashing-arm64 to support Apple Silicon (#20) (ad3b893)
+- chore: Add documentation update to CHANGELOG (#32) (04615d1)
+- feat: Drop ROS 2 Dashing support (#31) (2876cd7)
+- release: v1.2.0 (#33) (1efc20f)
+- feat: Add Dockerfile for galactic-arm64 to support Apple Silicon (#35) (6bb1737)
+- docs: Add link to ros-desktop-vnc (3aaeffd)
+- ci: Simplify authentication (#36) (285e279)
+- ci: Create multi-architecture image (#38) (4ac4f76)
+- release: v1.3.0 (#39) (0076ce2)
+- chore: Add docker label (#40) (a1b7fe2)
+- ci: Update tag release CI trigger condition (#41) (00e6f56)
+- feat: Add ROS 2 Rolling Ridley (#44) (4886c42)
+- ci: Refactor GitHub Actions config file (#46) (1d0c312)
+- refactor: Merge install script into Dockerfile (#45) (d351f04)
+- fix: Update hotfix (#50) (b3d5e98)
+- ci: Allow execution even if other jobs fail (#49) (6101a4e)
+- ci: Add dependabot.yml (#48) (ce00aa3)
+- chore(deps): bump actions/checkout from 2 to 3 (#52) (b5dc1b8)
+- chore(deps): bump docker/login-action from 1 to 2 (#53) (f686931)
+- chore(deps): bump github/codeql-action from 1 to 2 (#55) (a7afa03)
+- chore(deps): bump docker/setup-qemu-action from 1 to 2 (#54) (fa5943f)
+- feat: Add ROS 2 Humble Dockerfile (#56) (7350fc9)
+- chore(deps): bump docker/metadata-action from 3 to 4 (#51) (abbde61)
+- feat: Upgrade rolling base image to Ubuntu 22.04 (#59) (ba79f5f)
+- docs: Add related projects link (#61) (2581b7b)
+- chore: Update git-chglog config to add dependabot log (#63) (970de9b)
+- release: v1.4.0 (#64) (e15d303)
+- fix: Remove simulation package from rolling arm64 (#68) (26a3e8e)
+- fix: Fix platform specifying error (#67) (8115cc0)
+- ci: Use self-hosted runner (#72) (cee43da)
+- ci: Optimize for self-hosted runner (#75) (b706a44)
+- ci: Fix cache clean step (#76) (fa8e688)
+- feat: Add terminator (#73) (ee4fc11)
+- feat: Enable bash-completion (#79) (03e0506)
+- feat: Enable colcon-argcomplete (#80) (c3abe17)
+- ci: Update set-output to recommended format (#81) (2cd57d4)
+- feat: Drop support for ROS 2 Galactic (#82) (9d39dfa)
+- feat: Set ROS 2 Humble as the "latest" image (#83) (8bcf1dd)
+- chore: Add CODE_OF_CONDUCT.md and CONTRIBUTING.md (#86) (c1d0611)
+- fix: Stop using mirror server (#88) (abc227c)
+- feat: Add ROS 2 Iron Irwini (#89) (47ff16b)
+- chore: Fix Trivy scan timeout (#93) (e643ca5)
+- feat: Use atsushisaito/docker-ubuntu-sweb (#92) (feaaf44)
+- fix: Add "--security-opt" (#94) (4b8e1b0)
+- feat: Add terminator shortcut on desktop (#95) (b7bc7df)
+- feat: Add FireFox (#98) (fd24589)
+- docs: Update README (#101) (b9f2bd0)
+- chore: Check docker base image version (#102) (6973bd0)
+- feat: Add VSCodium (#99) (18c8d61)
+- chore(deps): bump ubuntu from jammy-20230522 to jammy-20230804 (#106) (190c125)
+- fix: Fix FireFox install error (#112) (f87e54a)
+- chore: Use GHA composite action (#111) (2314d7a)
+- release: v2.0.0 (#113) (11e035f)
+- chore: Fix "no space left on device" (#114) (9712f0d)
+- chore(deps): bump actions/checkout from 3 to 4 (#110) (2fe78e7)
+- chore(deps): bump ubuntu from jammy-20230804 to jammy-20230816 in /rolling (#109) (d328140)
+- chore(deps): bump ubuntu from jammy-20230804 to jammy-20230816 in /iron (#108) (2bff02c)
+- chore(deps): bump ubuntu from jammy-20230804 to jammy-20230816 in /humble (#107) (a7af451)
+- docs: Update README (#115) (00a3f9d)
+- chore: Bump Tiryoh/gha-jobid-action from 0 to 1 (#116) (07be203)
+- chore(deps): bump ubuntu from jammy-20230816 to jammy-20240212 in /rolling (#137) (97ad6e7)
+- chore(deps): bump ubuntu from jammy-20230816 to jammy-20240212 in /humble (#136) (4c20a19)
+- chore(deps): bump ubuntu from jammy-20230816 to jammy-20240212 in /iron (#135) (15d1ee8)
+- chore: Cleanup test (#139) (6bb1c0a)
+- chore: Update GitHub Actions (#143) (864f867)
+- chore(deps): bump ubuntu from jammy-20240212 to jammy-20240227 in /rolling (#141) (9631ff4)
+- chore(deps): bump ubuntu from jammy-20240212 to jammy-20240227 in /humble (#142) (aafdee4)
+- chore(deps): bump ubuntu from jammy-20240212 to jammy-20240227 in /iron (#140) (4c1baa5)
+- fix: Fix execution error on Windows (fix #147) (#151) (9dd19b1)
+- fix: Update codium repo to fix install error (#148) (8588c9a)
+- feat: Move `RUN rm docker-clean` command the end to diet image size (#153) (69b3f75)
+- chore(deps): bump ubuntu from jammy-20240227 to jammy-20240416 in /rolling (#159) (e11ded3)
+- chore(deps): bump ubuntu from jammy-20240227 to jammy-20240416 in /humble (#158) (ac0b02d)
+- chore(deps): bump ubuntu from jammy-20240227 to jammy-20240416 in /iron (#157) (aade57d)
+- chore: Use dependabot multi-directory configuration (#160) (abcf976)
+- ci: Update dependabot.yml to check composite actions (#165) (08428ab)
+- feat: Update console message to guide "docker commit" (#161) (9f0aa2e)
+- chore(deps): bump ubuntu from jammy-20240416 to jammy-20240427 in /rolling (#164) (a901c6e)
+- feat: Update ROS 2 Rolling to Ubuntu 24.04 (#166) (c3e5d18)
+- feat: Add ROS 2 Jazzy Jalisco (#168) (bc1801e)
+- docs: Add ROS 2 Jazzy to README (#169) (c169335)
+- chore(deps): bump ubuntu from jammy-20240416 to jammy-20240530 in /humble (#170) (156b99a)
+- chore(deps): bump ubuntu from jammy-20240416 to jammy-20240530 in /iron (#171) (981e700)
+- chore(deps): bump ubuntu from noble-20240429 to noble-20240530 in /rolling (#172) (ed5db33)
+- fix: Add workaround for issue when image is created with "docker commit" (#175) (a486181)
+- chore(deps): bump docker/build-push-action from 5 to 6 in /.github/actions/deploy (#174) (ed06c14)
+- chore(deps): bump ubuntu from noble-20240530 to noble-20240605 in /rolling (#173) (32cfde1)
+- feat(ci): Add ROS 2 Jazzy to dependabot config (#176) (46c2949)
+- chore(deps): bump ubuntu from noble-20240429 to noble-20240605 in /jazzy (#177) (ba8a27d)
+- chore(deps): bump ubuntu from jammy-20240530 to jammy-20240808 in /humble (#178) (5aca2a7)
+- chore(deps): bump ubuntu from jammy-20240530 to jammy-20240808 in /iron (#179) (be8f4e3)
+- chore(deps): bump ubuntu from noble-20240605 to noble-20240801 in /jazzy (#180) (ea0d7a0)
+- chore(deps): bump ubuntu from noble-20240605 to noble-20240801 in /rolling (#181) (ea580e9)
+- chore(ci): Save Trivy cache (#182) (3da5185)
+- chore(ci): Use Trivy cache (#183) (e068704)
+- fix(ci): Fix oras command not found error (#186) (c02bc8c)
+- chore(deps): bump ubuntu from noble-20240801 to noble-20241011 in /jazzy (#187) (f1fc727)
+- chore(deps): bump ubuntu from noble-20240801 to noble-20241011 in /rolling (#188) (a8f8e67)
+- fix(ci): Fix ghcr push error (#189) (910b658)
+- chore(deps): bump ubuntu from noble-20241011 to noble-20241015 in /rolling (#192) (a8ed381)
+- chore(deps): bump ubuntu from noble-20241011 to noble-20241015 in /jazzy (#191) (1caa136)
+- feat: Enable Gazebo on arm64 Jazzy/Rolling (#194) (cf20c4c)
+- docs: Update image (#195) (2421922)
+- fix: Fix firefox launch error (#197) (2ad56ec)
+- feat(ci): Push to ghcr.io (#198) (8fa2b8b)
+- docs: Add star-history-chart (#199) (16cfc53)
+- chore: Add docker-bake.hcl for multi-arch ROS 2 desktop VNC images (#200) (544a2eb)
+- chore(deps): bump ubuntu from jammy-20240808 to jammy-20250126 in /humble (#201) (b28fcab)
+- chore(deps): bump ubuntu from jammy-20240808 to jammy-20250126 in /iron (#202) (ba0706c)
+- chore(deps): bump ubuntu from noble-20241015 to noble-20250127 in /jazzy (#203) (01ca5f1)
+- docs: Use ghcr.io instead of docker.io (#205) (b5eb5dc)
+- chore(deps): bump ubuntu from jammy-20250126 to jammy-20250404 in /humble (#207) (1831bfe)
+- chore(deps): bump ubuntu from jammy-20250126 to jammy-20250404 in /iron (#208) (22403d5)
+- chore(deps): bump ubuntu from noble-20241015 to noble-20250404 in /rolling (#209) (a118133)
+- chore(deps): bump ubuntu from noble-20250127 to noble-20250404 in /jazzy (#210) (cc49074)
+- feat(ci): Add Claude Code GitHub Workflow (#219) (c8f284b)
+- feat: Improve ROS2 desktop environment with enhanced remote desktop, Chinese input, and development tool support (7418d36)
+- feat: Add VSCodium extension installation and environment variable configuration (785a602)
+- fix: make entrypoint.sh executable (03a9b40)
+- feat(docker): add default .bashrc configuration for root and custom users (fbaa911)
+- docs: add Chinese usage instructions for docker-ros2-desktop-vnc (d365de4)
+- Update README.md (5d6d20c)
+- fix: Remove debug flag from sshd command and allow multiple users to SSH into the container The debug flag (-d) has been removed from the sshd command, as it is unnecessary in production environments and may expose sensitive information in logs. Additionally, configuration changes have been made to allow multiple users to establish SSH connections to the container simultaneously. This ensures that the SSH service runs securely and efficiently in production while maintaining support for multi-user access. (1d7fa92)
+- chore: add version info to entrypoint script (f147137)
+- ci: add release-please configuration and workflow (2a0c9ff)
+- chore: update container version to 1.1.3 in entrypoint script (16f5e80)
+- feat: add changelog test feature (e2599e4)
+- feat: add changelog test feature (fe98e94)
+- ci: change default branch from main to master (5c19e27)
+- feat: add master branch changelog test (8decb7d)
+- feat: add changelog test file (ddf91ce)
+- chore: add release-please manifest (4c2f26c)
+- feat(changelog): add multi-type test file (f1eef77)
+- ci: update release workflow and config files (8a225d0)
+- feat(changelog): add multi-type test file (f148485)
+- fix: correct release-please config for JSON parsing (7888aa5)
+- fix: correct release-please config for JSON parsing (edaf5ce)
+- chore: update version tracking files (1733a88)
+- feat: add new feature for changelog test (8547c2e)
+- fix: resolve critical issue in changelog generation (d0a7512)
+- docs: update installation guide for changelog (f077a46)
+- fix: use GITHUB_TOKEN for release-please action (227ebaf)
+- fix: correct API URLs and remove backticks (82a5981)
+- feat: add third changelog test (db6b59e)
+- chore: add release-please manifest (ef42b80)
+- feat: add fourth changelog test (624aa39)
+- feat: add fourth changelog test (de60486)
+- ci: remove redundant github api urls from release-please config (b54bdb1)
+- feat: add fourth changelog test (9002693)
+- chore: add changelog update workflow (7365dd8)
