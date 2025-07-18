@@ -3,7 +3,7 @@ name: Update Changelog and VERSION
 on:
   push:
     branches:
-      - main
+      - master
 jobs:
   generate-changelog:
     runs-on: ubuntu-latest
