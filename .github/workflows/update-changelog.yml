@@ -1,0 +1,25 @@
+name: Update CHANGELOG
+on:
+  push:
+    branches: [ master ]
+jobs:
+  update-changelog:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Configure Git
+        run: |
+          git config --global user.name 'GitHub Actions'
+          git config --global user.email 'actions@github.com'
+      - name: Update CHANGELOG
+        run: |
+          echo '# Changelog' > CHANGELOG.md
+          echo '' >> CHANGELOG.md
+          git log --pretty=format:"- %s (%h)" --reverse >> CHANGELOG.md
+      - name: Commit changes
+        run: |
+          git add CHANGELOG.md
+          git commit -m 'chore: update CHANGELOG'
+          git push
