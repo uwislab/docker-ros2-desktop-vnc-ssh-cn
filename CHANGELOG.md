@@ -217,3 +217,5 @@
 - feat: MAJOR add fourth changelog test (59c2e22)
 - chore: update CHANGELOG (9014aec)
 - chore: merge update-changelog and update-version workflows (282b60f)
+- chore: update CHANGELOG (bd0fddb)
+- ci: remove changelog and version update workflows (e6e9968)
