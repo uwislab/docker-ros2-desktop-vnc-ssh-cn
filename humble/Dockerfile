@@ -146,3 +146,9 @@ ENTRYPOINT [ "/bin/bash", "-c", "/entrypoint.sh" ]
 ENV USER ubuntu
 ENV PASSWD ubuntu
 
+# Create default .bashrc with essential content
+RUN echo 'if [ -f /etc/bashrc ]; then\n    . /etc/bashrc\nfi\n\nexport PATH=$PATH\n' > /root/.bashrc
+RUN touch /root/.bashrc && \
+    echo "# ~/.bashrc: executed by bash(1) for non-login shells." >> /root/.bashrc && \
+    echo "# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)" >> /root/.bashrc && \
+    echo "# for examples" >> /root/.bashrc

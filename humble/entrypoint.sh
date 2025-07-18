@@ -3,9 +3,22 @@
 # Create User
 USER=${USER:-root}
 HOME=/root
+# Create User with proper skel files
 if [ "$USER" != "root" ]; then
     echo "* enable custom user: $USER"
+    # Remove existing home directory if exists
+    rm -rf /home/$USER
+    # Create user with proper skel files
     useradd --create-home --shell /bin/bash --user-group --groups adm,sudo $USER
+    # Ensure .bashrc exists with basic content
+    if [ ! -f /home/$USER/.bashrc ]; then
+        cp /etc/skel/.bashrc /home/$USER/.bashrc || \
+        echo 'if [ -f /etc/bashrc ]; then
+            . /etc/bashrc
+        fi
+        export PATH=$PATH
+        ' > /home/$USER/.bashrc
+    fi
     echo "$USER ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
     if [ -z "$PASSWORD" ]; then
         echo "  set default password to \"ubuntu\""
@@ -79,6 +92,12 @@ BASHRC_PATH=$HOME/.bashrc
 grep -F "source /opt/ros/$ROS_DISTRO/setup.bash" $BASHRC_PATH || echo "source /opt/ros/$ROS_DISTRO/setup.bash" >> $BASHRC_PATH
 grep -F "source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash" $BASHRC_PATH || echo "source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash" >> $BASHRC_PATH
 chown $USER:$USER $BASHRC_PATH
+
+# Ensure .bashrc exists
+if [ ! -f $HOME/.bashrc ]; then
+    touch $HOME/.bashrc
+    chown $USER:$USER $HOME/.bashrc
+fi
 
 # 配置VSCodium扩展环境变量（用户级别）
 if [ -n "$USER" ] && [ "$USER" != "root" ]; then
