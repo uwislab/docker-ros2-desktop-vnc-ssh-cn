@@ -1,0 +1,37 @@
+name: Update Version
+on:
+  push:
+    branches: [ master ]
+jobs:
+  update-version:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Configure Git
+        run: |
+          git config --global user.name 'GitHub Actions'
+          git config --global user.email 'actions@github.com'
+      - name: Update Version
+        run: |
+          current_version=$(cat VERSION)
+          major=$(echo $current_version | cut -d. -f1)
+          minor=$(echo $current_version | cut -d. -f2)
+          patch=$(echo $current_version | cut -d. -f3)
+          commit_msg=$(git log -1 --pretty=%B)
+          if echo "$commit_msg" | grep -qE 'BREAKING CHANGE|MAJOR'; then
+            major=$((major + 1))
+            minor=0
+            patch=0
+          elif echo "$commit_msg" | grep -qE 'feat|MINOR'; then
+            minor=$((minor + 1))
+            patch=0
+          elif echo "$commit_msg" | grep -qE 'fix|PATCH'; then
+            patch=$((patch + 1))
+          fi
+          new_version="$major.$minor.$patch"
+          echo $new_version > VERSION
+          git add VERSION
+          git commit -m "chore: bump version to $new_version"
+          git push
