@@ -1,0 +1,6 @@
+release-type: simple
+package-name: docker-ros2-desktop-vnc-ssh-cn
+changelog-path: CHANGELOG.md
+version-file: VERSION
+bump-minor-pre-major: false
+bump-patch-for-minor-pre-major: false
