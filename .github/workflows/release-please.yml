@@ -1,9 +1,11 @@
 ---
 name: Release Please
 
-on:
+"on":
   push:
-    branches: [ master ]  # 将main改为master
+    # 将main改为master
+    branches:
+      - master
 
 permissions:
   contents: write
