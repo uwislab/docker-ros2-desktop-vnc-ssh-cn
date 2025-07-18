@@ -11,6 +11,66 @@
 
 Dockerfiles to provide HTML5 VNC interface to access Ubuntu Desktop + ROS2, based on [AtsushiSaito/docker-ubuntu-sweb](https://github.com/AtsushiSaito/docker-ubuntu-sweb)
 
+# Instructions for Using docker-ros2-desktop-vnc (SSH Enhanced Chinese Version)
+
+## 1. Load the Docker Image
+Use the following command to load the Docker image:
+```bash
+docker load -i ros2-desktop-vnc-humble-arm64.docker.tar
+```
+
+## 2. Run the Docker Container
+Run the loaded image with port mapping and other necessary configurations:
+```bash
+docker run -p 6080:80 -p 6022:22 --security-opt seccomp=unconfined --shm-size=4g tiryoh/ros2-desktop-vnc:humble-amd64
+```
+### Parameter Explanations
+- `-p 6080:80`: Maps port 80 of the container to port 6080 of the host, used for accessing the desktop environment via a browser.
+- `-p 6022:22`: Maps port 22 of the container to port 6022 of the host, used for accessing the container via SSH.
+- `--security-opt seccomp=unconfined`: Allows the container to use unrestricted system calls; this parameter is required for starting Ubuntu Jammy-based images in some environments.
+- `--shm-size=4g`: Sets the shared memory size to 4GB.
+
+## 3. Access the Desktop Environment
+Access `http://127.0.0.1:6080/` in your browser to enter the Ubuntu desktop environment.
+
+### How to Use Chinese Input Method
+There is a shortcut for "IBus Chinese Input Method" on the desktop; click this shortcut to enable the Chinese input method.
+
+## 4. Access the Container via SSH
+The container has SSH service enabled, with the default username and password both being `ubuntu`. You can access the container via SSH using the following methods:
+
+### Using Command Line Tools
+Enter the following command in the terminal:
+```bash
+ssh ubuntu@127.0.0.1 -p 6022
+```
+
+### Using Trace's Remote Explorer
+Enter the address `ssh ubuntu@127.0.0.1 -p 6022` in Trace's Remote Explorer to open files inside the container.
+
+## 5. Notes on Data Saving
+Files inside the container will be lost when the container stops. To avoid data loss, it is recommended to follow these steps:
+
+### Using Trace Development Workflow
+1. **Connect to the Container**: Connect to the inside of the container via Trace's Remote Explorer.
+2. **Clone Code**: Execute the following command in Trace's terminal to clone the robot code repository:
+   ```bash
+   git clone <your code repository URL>
+   ```
+3. **Compile Code**: Compile the code in the container using Trace's terminal:
+   ```bash
+   cd <project directory>
+   colcon build --packages-select <package name>
+   ```
+4. **Commit Code**: Use Trace's Git tools to commit and push code to GitHub:
+   - After modifying code in Trace, view changes via the Source Control panel.
+   - Enter a commit message and click Commit.
+   - Use the Push button to push changes to the GitHub remote repository.
+
+**Note**: After each development session, ensure that code is committed to remote storage such as GitHub to prevent data loss when the container stops.
+
+# The following is the description of the original project
+
 ROS 1 version: https://github.com/Tiryoh/docker-ros-desktop-vnc
 
 ![animation](https://github.com/user-attachments/assets/137a5272-f6a3-490f-8bfc-168d082ac949)
