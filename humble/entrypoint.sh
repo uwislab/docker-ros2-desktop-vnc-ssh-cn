@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# 打印版本号，使用 uname -m 自动获得CPU体系 
+echo "ROS2-Desktop-VNC-humble-$(uname -m) Container Version: 1.1.1"
+
 # Create User
 USER=${USER:-root}
 HOME=/root
