@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/uwislab/docker-ros2-desktop-vnc-ssh-cn/compare/v1.0.0...v1.0.1) (2025-07-18)
+
+
+### Bug Fixes
+
+* 337 ([a499192](https://github.com/uwislab/docker-ros2-desktop-vnc-ssh-cn/commit/a4991929b6cdb1a548c0cd678120c167fe19f4cf))
+
 ## 1.0.0 (2025-07-18)
 
 
